@@ -1,6 +1,7 @@
 # leetcode-cpp
 
-This project contains solutions to leetcode problems implemented in C++. 
+This project contains solutions to leetcode problems implemented in C++. Google Test is used to unit test the solutions outside of the leetcode environment.
+
 Each solution folder contains a solution.h file which contains the solution to a given problem. The solution is done like this so it can easily be copy-pasted into leetcode. A main.cpp file also exists which is used to define unit tests using Google Test.
 
 ## Build and Run
