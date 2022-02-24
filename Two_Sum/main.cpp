@@ -1,26 +1,18 @@
 #include <vector>
 #include <iostream>
 #include "solution.h"
+#include "gtest/gtest.h"
 
 using namespace std;
 
 int main()
 {
-    vector<int> nums = {1, 0, 3, -1, 15, 7}; 
+    ::testing::InitGoogleTest();
 
-    Solution sol;
+    return RUN_ALL_TESTS();
+}
 
-    vector<int> ret = sol.twoSum(nums, 1);
-
-    for (int i: ret)
-        cout << i << ' ';
-
-    cout << endl;
-
-    cout << "testing sort" << endl;
-
-    vector<int> sortedNums = sol.mergeSort(nums);
-
-    for (int i: sortedNums)
-        cout << i << ' ';
+TEST(testTheTest, test1)
+{
+    EXPECT_EQ(0,-1);
 }
