@@ -1,3 +1,4 @@
+#include <unordered_map>
 using namespace std;
 
 class Solution 
@@ -7,66 +8,24 @@ class Solution
         {
             vector<int> ret;
 
-            for(int i = 0; i < nums.size() - 1; i++)
+            unordered_map<int, int> theMap;
+
+            for(auto i = nums.begin(); i < nums.end(); i++)
             {
-                for(int j = i; j < nums.size(); j++)
+                int neededVal = target - *i;
+                auto neededValItr = theMap.find(neededVal);
+                if(neededValItr != theMap.end())
                 {
-                    if(nums[i] + nums[j] == target)
-                    {
-                        ret.push_back(i);
-                        ret.push_back(j);
-                    }
+                    ret.push_back(neededValItr->second);
+                    ret.push_back(distance(nums.begin(), i));
+                    break;
                 }
+
+                pair<int, int> insertPair(*i, distance(nums.begin(), i));
+                theMap.insert(insertPair);
             }
+
 
             return ret;
-        }
-    
-        vector<int> mergeSort(vector<int> originalList)
-        {
-            // base case
-            if(originalList.size() == 1)
-                return originalList;
-
-            int midpoint = originalList.size() / 2;
-            vector<int> vect1;
-            vector<int> vect2;
-
-            vect1.assign(originalList.begin(), std::next(originalList.begin(), midpoint));
-            vect2.assign(std::next(originalList.begin(), midpoint), originalList.end());
-
-            return merge(mergeSort(vect1), mergeSort(vect2));
-        }
-
-        // merge two sorted lists
-        vector<int> merge(const vector<int> list1, const vector <int> list2)
-        {
-            vector<int> retList;
-
-            int i = 0;
-            int j = 0;
-            while(i < list1.size() && j < list2.size())
-            {
-                if(list1[i] < list2[j])
-                {
-                    retList.push_back(list1[i++]);
-                }
-                else
-                {
-                    retList.push_back(list2[j++]);
-                }
-            }
-
-            while(i < list1.size())
-            {
-                retList.push_back(list1[i++]);
-            }
-
-            while(j < list2.size())
-            {
-                retList.push_back(list2[j++]);
-            }
-
-            return retList;
         }
 };
