@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(Tests)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 
@@ -11,3 +11,4 @@ link_libraries(gtest)
 
 add_subdirectory(Two_Sum ../Two_Sum/build)
 add_subdirectory(Best_Stock ../Best_Stock/build)
+add_subdirectory(Contains_Duplicate ../Contains_Duplicate/build)
