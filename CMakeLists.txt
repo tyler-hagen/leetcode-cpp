@@ -4,6 +4,7 @@ project(Tests)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS True)
+set(CMAKE_BUILD_TYPE Debug)
 
 add_subdirectory($ENV{GTEST_BASE_PATH} $ENV{GTEST_BASE_PATH}/build)
 include_directories($ENV{GTEST_BASE_PATH}/googletest/include)
