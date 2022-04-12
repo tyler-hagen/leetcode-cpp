@@ -10,25 +10,20 @@ public:
         int midpointValue = nums[midpoint];
         int furthestRightValue = nums[nums.size() - 1];
 
-
-        if(nums.size() == 1)
-            return nums[0];
-        if(nums.size() == 2 && nums[0])
-            return nums[0] < nums[1] ? nums[0] : nums[1];
-            
-        if(furthestLeftValue < midpointValue && midpointValue < furthestRightValue)
-            return furthestLeftValue;
-
         // transition happened on the left side
         if(midpointValue < furthestLeftValue)
         {
             vector<int> leftVector(nums.begin(), std::next(nums.begin(), midpoint + 1));
             return findMin(leftVector);
         }
-        else
+        else if(midpointValue > furthestRightValue)
         {
-            vector<int> rightVector(std::next(nums.begin(), midpoint), nums.end());
+            vector<int> rightVector(std::next(nums.begin(), midpoint + 1), nums.end());
             return findMin(rightVector);
         } 
+        else
+        {
+            return furthestLeftValue;
+        }
     }
 };
