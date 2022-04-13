@@ -18,3 +18,4 @@ add_subdirectory(Product_Of_Array_Except_Self ../Product_Of_Array_Except_Self/bu
 add_subdirectory(Maximum_Subarray ../Maximum_Subarray/build)
 add_subdirectory(Maximum_Product_Subarray ../Maximum_Product_Subarray/build)
 add_subdirectory(Minimum_Rotated_Sorted_Array ../Minimum_Rotated_Sorted_Array/build)
+add_subdirectory(Search_Rotated_Sorted_Array ../Search_Rotated_Sorted_Array/build)
