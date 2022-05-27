@@ -2,7 +2,8 @@ using namespace std;
 
 class Solution {
 public:
-    int maxArea(vector<int>& height) {
+    int maxArea(vector<int>& height) 
+    {
         int maxArea = -1;
         for(auto i = height.begin(); i != std::prev(height.end()); i++)
         for(auto j = std::next(height.begin()); j != height.end(); j++)
