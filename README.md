@@ -15,7 +15,7 @@ Each solution folder contains a solution.h file which contains the solution to a
 In the repository root: 
 - `mkdir build`
 - `cd build`
-- `cmake ..` (This is known as an "out of source" build?)
+- `cmake ..`
 - `cmake --build .`
 
 ### Run a solution

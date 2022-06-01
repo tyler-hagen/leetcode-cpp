@@ -8,7 +8,7 @@
         "name": "C/C++: clang++ build and debug active file",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}/Container_With_Most_Water/build/Container_With_Most_Water",
+        "program": "${fileDirname}/build/${relativeFileDirname}",
         // "args": ["${relativeFile}"],
         "stopAtEntry": true,
         "cwd": "${workspaceFolder}",
