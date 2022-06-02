@@ -5,14 +5,20 @@ public:
     int maxArea(vector<int>& height) 
     {
         int maxArea = -1;
-        for(auto i = height.begin(); i != std::prev(height.end()); i++)
-        for(auto j = std::next(height.begin()); j != height.end(); j++)
-        {
-            int minHeight = *i > *j ? *j : *i;
-            int width = std::distance(i, j);
-            int area = minHeight * width;
 
-            maxArea = maxArea > area ? maxArea : area;
+        auto i = height.begin();
+        auto j = std::prev(height.end());
+        while(i != j)
+        {
+            auto minHeight = std::min(*i, *j);
+            auto distance = std::distance(i, j);
+            auto area = minHeight * distance;
+            maxArea = area > maxArea ? area : maxArea;
+
+            if(*i > *j)
+                j--;
+            else
+                i++;
         }
 
         return maxArea;
