@@ -21,3 +21,4 @@ add_subdirectory(Minimum_Rotated_Sorted_Array ../Minimum_Rotated_Sorted_Array/bu
 add_subdirectory(Search_Rotated_Sorted_Array ../Search_Rotated_Sorted_Array/build)
 add_subdirectory(Three_Sum ../Three_Sum/build)
 add_subdirectory(Container_With_Most_Water ../Container_With_Most_Water/build)
+add_subdirectory(Sum_Of_Two_Integers ../Sum_Of_Two_Integers/build)
