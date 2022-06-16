@@ -12,12 +12,22 @@ int main(int argc, char** argv)
     return RUN_ALL_TESTS();
 }
 
-TEST(Sum_Of_Two_Integers, general_case)
+TEST(Counting_Bits, general_case)
 {
-    int a = 1, b = 2;
+    int input = 2;
     Solution s;
-    int expected = 3;
+    vector<int> expected = {0, 1, 1};
 
-    int actual = s.getSum(a, b);
+    auto actual = s.countBits(input);
+    EXPECT_EQ(actual, expected);
+}
+
+TEST(Counting_Bits, general_case_2)
+{
+    int input = 5;
+    Solution s;
+    vector<int> expected = {0, 1, 1, 2, 1, 2};
+
+    auto actual = s.countBits(input);
     EXPECT_EQ(actual, expected);
 }
