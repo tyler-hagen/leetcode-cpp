@@ -56,6 +56,31 @@ public:
 
         return maxSumNotTwoChildren;     
     }
+
+    int maxPathSum2(TreeNode* root) 
+    {
+        maxPath = INT32_MIN;
+        maxPathImpl2(root);  
+        return maxPath;
+    }
+
+    int maxPathImpl2(TreeNode* root)
+    {
+        // calculate max sum path without 2 children (could be 1 or less)
+        // calculate max sum path with 2 children (could be 2 or less)
+
+        // fundamental difference - what does this open up?
+        // dont update the maxPath global variable here. the node is null, not zero. 
+        if(root == nullptr)
+            return 0;
+
+        int leftMax = std::max(0,maxPathImpl2(root->left));
+        int rightMax = std::max(0,maxPathImpl2(root->right));
+        int maxSumTwoOrLessChildren = leftMax + rightMax + root->val;
+        maxPath = maxSumTwoOrLessChildren > maxPath ? maxSumTwoOrLessChildren : maxPath;
+        
+        return root->val + std::max(leftMax, rightMax);
+    }
 };
 
 
