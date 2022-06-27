@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(Longest_Substring_Between_Two_Equal_Characters)
+
+add_executable(Longest_Substring_Between_Two_Equal_Characters main.cpp solution.h)

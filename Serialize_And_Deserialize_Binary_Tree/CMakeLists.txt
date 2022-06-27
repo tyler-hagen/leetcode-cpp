@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(Serialize_And_Deserialize_Binary_Tree)
+
+add_executable(Serialize_And_Deserialize_Binary_Tree main.cpp solution.h)

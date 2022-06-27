@@ -40,3 +40,6 @@ In the repository root:
 - copy the solution class from leetcode into solution.h
 - in the root CMakeLists.txt, add the new problem directory as a subdirectory like the other solutions
 - in the root `build` folder run `cmake .. && cmake --build .` again
+
+## Todo
+- Move helper functions to own shared lib?
