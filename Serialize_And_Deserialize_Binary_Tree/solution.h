@@ -21,6 +21,81 @@ struct TreeNode {
     }
 };
 
+namespace recursive
+{
+    class Codec {
+        public:
+
+        // Encodes a tree to a single string.
+        string serialize(TreeNode* root) 
+        {
+            string ret;
+            serialize(root, ret);
+
+            return ret;
+        }
+
+        void serialize(TreeNode* node, string& str)
+        {
+            if(node == nullptr)
+            {
+                str += ",";
+                return;
+            }
+            str += std::to_string(node->val);
+            str += ",";
+            serialize(node->left, str);
+            serialize(node->right, str);
+
+            return;
+        }
+
+        // Decodes your encoded data to tree.
+        TreeNode* deserialize(string data) {
+            vector<int> nodeVals = nodeStringToNodeVector(data);
+            int idx = 0;
+            return deserialize(nodeVals, idx);
+        }
+
+        TreeNode* deserialize(const vector<int>& nodeVals, int& idx)
+        {
+            if(nodeVals[idx] == INT32_MIN)
+            {
+                return nullptr;
+                idx++;
+            }
+            TreeNode* node = new TreeNode(nodeVals[idx]);
+            node->left = deserialize(nodeVals, ++idx);
+            node->right = deserialize(nodeVals, ++idx);
+
+            return node;
+        }
+
+        vector<int> nodeStringToNodeVector(const string& data)
+        {
+            vector<int> nodeVals;
+            auto i = 0;
+            while(i < data.size())
+            {
+                auto commaPos = data.find(",", i);
+                // this is a "null" child
+                if(commaPos == i)
+                {
+                    nodeVals.push_back(INT32_MIN);
+                }
+                else
+                {
+                    auto nodeVal = data.substr(i, commaPos);
+                    nodeVals.push_back(std::stoi(nodeVal));
+                }
+                i = commaPos+1;
+            }
+
+            return nodeVals;
+        }
+    };
+}
+
 class Codec {
 public:
 
