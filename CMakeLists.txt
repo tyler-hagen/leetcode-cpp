@@ -30,3 +30,5 @@ add_subdirectory(Binary_Tree_Maximum_Path_Sum ../Binary_Tree_Maximum_Path_Sum/bu
 add_subdirectory(Serialize_And_Deserialize_Binary_Tree ../Serialize_And_Deserialize_Binary_Tree/build)
 add_subdirectory(Same_Tree ../Same_Tree/build)
 add_subdirectory(Longest_Substring_Between_Two_Equal_Characters ../Longest_Substring_Between_Two_Equal_Characters/build)
+add_subdirectory(BT_From_Preorder_Inorder ../BT_From_Preorder_Inorder/build)
+add_subdirectory(Validate_Binary_Tree ../Validate_Binary_Tree/build)
