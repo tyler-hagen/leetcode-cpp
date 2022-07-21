@@ -1,108 +1,120 @@
 #include <string>
-#include<vector>
-
+#include <vector>
+#include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
 class Solution {
 public:
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        vector<string> ret;
 
-        for(auto i = words.begin(); i != words.end(); i++)
-        {
-            if(findWord(board, *i))
-                ret.push_back(*i);
-        }
-
-        return ret;
-    }
-
-    bool findWord(const vector<vector<char>>& board, const string& word)
-    {
-        bool wordFound = false;
-        //first, find coords of every occurence of the first letter
-        vector<int> row;
-        vector<int> column;
-        findAllOccurences(board, word[0], row, column);
         vector<vector<bool>> alreadyVisited(board.size());
+        unordered_set<char> charsOnBoard;
         for(auto i = 0; i < board.size(); i++)
         {
             for(auto j = 0; j < board[i].size(); j++)
             {
                 alreadyVisited[i].push_back(false);
+                charsOnBoard.insert(board[i][j]);
             }
         }
 
-        for(auto i = 0; i < row.size(); i++)
+        auto i = words.begin();
+        while(i != words.end())
         {
-            if(traceWord(board, word, row[i], column[i], 0, alreadyVisited))
-                return true;
+            bool allCharsExist = true;
+            for(auto j = i->begin(); j != i->end(); j++)
+            {
+                if(charsOnBoard.find(*j) == charsOnBoard.end())
+                {
+                    i = words.erase(i);
+                    allCharsExist = false;
+                    break;
+                }
+            }
+            // only increment if we didn't get back the new iterator from erase
+            if(allCharsExist)
+                i++;
         }
 
-        return false;
-    }
-
-    bool traceWord(const vector<vector<char>>& board, const string& word, int row, int column, int idx, vector<vector<bool>>& alreadyVisited)
-    {
-        // not included in the alreadyVisited in this case
-        if(board[row][column] != word[idx])
-            return false;
-
-        if(idx == word.size() - 1)
-            return true;
-
-        alreadyVisited[row][column] = true;
-        vector<int> rows;
-        vector<int> columns;
-        findAdjacents(board, alreadyVisited, row, column, rows, columns);
-
-        bool ret = false;
-        for(int i = 0; i < rows.size(); i++)
+        Trie trie;
+        for(auto i = words.begin(); i != words.end(); i++)
         {
-            if(traceWord(board, word, rows[i], columns[i], idx + 1, alreadyVisited))
-                ret = true;
+            trie.insert(*i);
         }
-        alreadyVisited[row][column] = false;
+
+        unordered_set<string> answerSet;
+        string word = "";
+        for(auto i = 0; i < board.size(); i++)
+        for(auto j = 0; j < board[i].size(); j++)
+        {
+            if(answerSet.size() == words.size())
+                break;
+            trace(board, trie.root, alreadyVisited, answerSet, word, i, j);
+        }
+
+        vector<string> ret(answerSet.begin(), answerSet.end());
+
         return ret;
     }
 
-    void findAdjacents(const vector<vector<char>>& board, const vector<vector<bool>>& alreadyVisited, const int row, const int column, vector<int>& rows, vector<int>& columns)
-    {
-        if(row - 1 >= 0 && !alreadyVisited[row - 1][column])
-        {
-            rows.push_back(row - 1);
-            columns.push_back(column);
-        }
-        if(row + 1 < board.size() && !alreadyVisited[row + 1][column])
-        {
-            rows.push_back(row + 1);
-            columns.push_back(column);
-        }
-        if(column - 1 >= 0 && !alreadyVisited[row][column - 1])
-        {
-            rows.push_back(row);
-            columns.push_back(column - 1);
-        }
-        if(column + 1 < board[row].size() && !alreadyVisited[row][column + 1])
-        {
-            rows.push_back(row);
-            columns.push_back(column + 1);
-        }
+private:
 
-        return;
-    }
+    class Trie {
+        public:
 
-    void findAllOccurences(const vector<vector<char>>& board, char c, vector<int>& row, vector<int>& column)
-    {
-        for(auto i = board.begin(); i != board.end(); i++)
-        for(auto j = i->begin(); j != i->end(); j++)
-        {
-            if(*j == c)
+            struct TrieNode
             {
-                row.push_back(std::distance(board.begin(), i));
-                column.push_back(std::distance(i->begin(), j));
+                bool isTerminal = false;
+                unordered_map<char, TrieNode*> nextChars;
+            };
+            TrieNode* root;
+
+            Trie() {
+                root = new TrieNode;
             }
+
+            void insert(string word) {
+                TrieNode* iterNode = root;
+                for(auto i = word.begin(); i != word.end(); i++)
+                {
+                    if(iterNode->nextChars.find(*i) == iterNode->nextChars.end())
+                    {
+                        iterNode->nextChars[*i] = new TrieNode;
+                    }
+                    iterNode = iterNode->nextChars[*i];
+                }
+                
+                iterNode->isTerminal = true;
+                return;
+            }
+    };
+
+    void trace(const vector<vector<char>>& board, Trie::TrieNode* trieNode, vector<vector<bool>>& alreadyVisited, unordered_set<string>& answerSet, string& word, int row, int column)
+    {
+        if(trieNode->isTerminal)
+        {
+            answerSet.insert(word);
         }
+        if(
+            row < 0 || row >= board.size() || column < 0 || column >= board[row].size() ||
+            alreadyVisited[row][column] ||
+            trieNode->nextChars.find(board[row][column]) == trieNode->nextChars.end()
+        )
+        {
+            return;
+        }
+
+        word += board[row][column];
+        alreadyVisited[row][column] = true;
+        
+        trace(board, trieNode->nextChars[board[row][column]], alreadyVisited, answerSet, word, row + 1, column);
+        trace(board, trieNode->nextChars[board[row][column]], alreadyVisited, answerSet, word, row - 1, column);
+        trace(board, trieNode->nextChars[board[row][column]], alreadyVisited, answerSet, word, row, column + 1);
+        trace(board, trieNode->nextChars[board[row][column]], alreadyVisited, answerSet, word, row, column - 1);
+
+        word.pop_back();
+        alreadyVisited[row][column] = false;
 
         return;
     }
