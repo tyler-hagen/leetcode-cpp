@@ -71,3 +71,18 @@ TEST(Longest_Repeating_Character_Replacement, replacement_left_and_right)
     // assert
     EXPECT_EQ(actual, expected);
 }
+
+TEST(Longest_Repeating_Character_Replacement, abaa)
+{
+    // arrange
+    string input = "ABAA";
+    int k = 0;
+    Solution s;
+    int expected = 2;
+
+    // run
+    int actual = s.characterReplacement(input, k);
+
+    // assert
+    EXPECT_EQ(actual, expected);
+}

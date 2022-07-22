@@ -10,12 +10,11 @@ public:
         unordered_map<char, int> occurences;
 
         occurences[s[0]]++;
+        int maxOccurences = 1;
         while(j != s.size())
         {
-            int maxOccurences = -1;
-            for(auto i = occurences.begin(); i != occurences.end(); i++)
-                if(i->second > maxOccurences)
-                    maxOccurences = i->second;
+            if(occurences[s[j]] > maxOccurences)
+                maxOccurences = occurences[s[j]];
 
             if(j - i + 1 - maxOccurences <= k)
             {
@@ -23,7 +22,9 @@ public:
                 occurences[s[++j]]++;
             }
             else
+            {
                 occurences[s[i++]]--;
+            }
         }
 
         return max;
