@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(Longest_Repeating_Character_Replacement)
+
+add_executable(Longest_Repeating_Character_Replacement main.cpp solution.h)

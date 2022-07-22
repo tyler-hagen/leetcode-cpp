@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(Longest_Substring_Without_Repeating_Characters)
+
+add_executable(Longest_Substring_Without_Repeating_Characters main.cpp solution.h)
