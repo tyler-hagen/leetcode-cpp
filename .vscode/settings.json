@@ -74,6 +74,10 @@
         "unordered_set": "cpp",
         "utility": "cpp",
         "variant": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "condition_variable": "cpp",
+        "thread": "cpp"
     }
 }
