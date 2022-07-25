@@ -42,3 +42,5 @@ add_subdirectory(Longest_Repeating_Character_Replacement ../Longest_Repeating_Ch
 add_subdirectory(Minimum_Window_Substring ../Minimum_Window_Substring/build)
 add_subdirectory(Valid_Anagram ../Valid_Anagram/build)
 add_subdirectory(Group_Anagrams ../Group_Anagrams/build)
+add_subdirectory(Valid_Parentheses ../Valid_Parentheses/build)
+add_subdirectory(Valid_Palindrome ../Valid_Palindrome/build)
