@@ -51,3 +51,8 @@ add_subdirectory(Longest_Palindromic_Substring ../Longest_Palindromic_Substring/
 add_subdirectory(Word_Subsets ../Word_Subsets/build)
 add_subdirectory(Clone_Graph ../Clone_Graph/build)
 add_subdirectory(Unique_Paths ../Unique_Paths/build)
+add_subdirectory(Kth_Smallest_Element_Sorted_Matrix ../Kth_Smallest_Element_Sorted_Matrix/build)
+add_subdirectory(My_Calendar_I ../My_Calendar_I/build)
+add_subdirectory(Mirror_Reflection ../Mirror_Reflection/build)
+add_subdirectory(Combination_Sum_IV ../Combination_Sum_IV/build)
+add_subdirectory(Count_Vowel_Permutation ../Count_Vowel_Permutation/build)
