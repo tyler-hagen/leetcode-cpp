@@ -1,7 +1,7 @@
 #include <vector>
-#include <iostream>
-#include "solution.h"
 #include "gtest/gtest.h"
+
+#include "../Node.h"
 
 using namespace std;
 
@@ -12,16 +12,16 @@ int main()
     return RUN_ALL_TESTS();
 }
 
-TEST(Clone_Graph, general_case)
+TEST(Node_generateGraphFromAdjacencyList, general_case)
 {
     // arrange
-    vector<vector<int>> adjacencyList = {{2,4},{1,3},{2,4},{1,3}};
+    vector<vector<int>> adjacencyList = {{2}, {1}};
     Node* inputGraph = Node::generateGraphFromAdjacencyList(adjacencyList);
-    Solution sol;
 
     // run
-    Node* actual = sol.cloneGraph(inputGraph);
+
+    Node* actualRoot = new Node(2);
 
     // assert
-    //EXPECT_TRUE(*actual == *inputGraph);
+    //EXPECT_TRUE(*actualRoot == *inputGraph);
 }

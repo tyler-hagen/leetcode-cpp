@@ -48,60 +48,60 @@ public:
         return pq.top().first; 
     }
 
-    int kthSmallestRecursive(const vector<vector<int>>& matrix, int k, int minRow, int minCol, int maxRow, int maxCol)
-    {
-        int midRow = minRow + (maxRow - minRow) / 2;
-        int midCol = minCol + (maxCol - minCol) / 2;
+    // int kthSmallestRecursive(const vector<vector<int>>& matrix, int k, int minRow, int minCol, int maxRow, int maxCol)
+    // {
+    //     int midRow = minRow + (maxRow - minRow) / 2;
+    //     int midCol = minCol + (maxCol - minCol) / 2;
 
-        if(countMatrixElementsLessThan(matrix, midRow, midCol) < k - 1)
-        {
-            kthSmallestRecursive(matrix, k, midRow + 1, )
-        }
-    } 
+    //     if(countMatrixElementsLessThan(matrix, midRow, midCol) < k - 1)
+    //     {
+    //         kthSmallestRecursive(matrix, k, midRow + 1, )
+    //     }
+    // } 
 
-    int countMatrixElementsLessThan(const vector<vector<int>>& matrix, int row, int column)
-    {
-        int guaranteedLessThan = (row + 1) * (column + 1) - 1;
+    // int countMatrixElementsLessThan(const vector<vector<int>>& matrix, int row, int column)
+    // {
+    //     int guaranteedLessThan = (row + 1) * (column + 1) - 1;
 
-        int topRightSquareRowIter = 0;
-        int topRightSquareColIter = column + 1;
+    //     int topRightSquareRowIter = 0;
+    //     int topRightSquareColIter = column + 1;
 
-        int sum = 0;
-        while(topRightSquareRowIter < row)
-        {
-            int colIter = topRightSquareColIter;
-            while(colIter < matrix[topRightSquareRowIter].size())
-            {
-                if(matrix[topRightSquareRowIter][colIter] < matrix[row][column])
-                {
-                    sum++;
-                    colIter++;
-                }
-                else
-                    break;
-            }
-            topRightSquareRowIter++;
-        }
+    //     int sum = 0;
+    //     while(topRightSquareRowIter < row)
+    //     {
+    //         int colIter = topRightSquareColIter;
+    //         while(colIter < matrix[topRightSquareRowIter].size())
+    //         {
+    //             if(matrix[topRightSquareRowIter][colIter] < matrix[row][column])
+    //             {
+    //                 sum++;
+    //                 colIter++;
+    //             }
+    //             else
+    //                 break;
+    //         }
+    //         topRightSquareRowIter++;
+    //     }
 
-        int bottomLeftSquareRowIter = row + 1;
-        int bottomLeftSquareColIter = 0;
+    //     int bottomLeftSquareRowIter = row + 1;
+    //     int bottomLeftSquareColIter = 0;
 
-        while(bottomLeftSquareRowIter < matrix.size())
-        {
-            int colIter = 0;
-            while(colIter < column)
-            {
-                if(matrix[bottomLeftSquareRowIter][colIter] < matrix[row][column])
-                {
-                    sum++;
-                    colIter++;
-                }
-                else
-                    break;
-            }
-            bottomLeftSquareRowIter++;
-        }
-    }
+    //     while(bottomLeftSquareRowIter < matrix.size())
+    //     {
+    //         int colIter = 0;
+    //         while(colIter < column)
+    //         {
+    //             if(matrix[bottomLeftSquareRowIter][colIter] < matrix[row][column])
+    //             {
+    //                 sum++;
+    //                 colIter++;
+    //             }
+    //             else
+    //                 break;
+    //         }
+    //         bottomLeftSquareRowIter++;
+    //     }
+    // }
 };
 
 
