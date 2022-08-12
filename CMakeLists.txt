@@ -60,3 +60,4 @@ add_subdirectory(Longest_Increasing_Subsequence ../Longest_Increasing_Subsequenc
 add_subdirectory(Binary_Trees_With_Factors ../Binary_Trees_With_Factors/build)
 add_subdirectory(N_Queens ../N_Queens/build)
 add_subdirectory(Course_Schedule ../Course_Schedule/build)
+add_subdirectory(Pacific_Atlantic_Water_Flow ../Pacific_Atlantic_Water_Flow/build)
