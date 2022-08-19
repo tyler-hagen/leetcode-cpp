@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(Split_Array_Into_Consecutive_Subsequences)
+
+add_executable(Split_Array_Into_Consecutive_Subsequences main.cpp solution.h)

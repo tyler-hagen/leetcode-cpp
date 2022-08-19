@@ -66,3 +66,5 @@ add_subdirectory(Substring_With_Concatenation_All_Words ../Substring_With_Concat
 add_subdirectory(Word_Ladder ../Word_Ladder/build)
 add_subdirectory(Word_Ladder_II ../Word_Ladder_II/build)
 add_subdirectory(Reduce_Array_Size_To_Half ../Reduce_Array_Size_To_Half/build)
+add_subdirectory(Merge_K_Sorted_Lists ../Merge_K_Sorted_Lists/build)
+add_subdirectory(Split_Array_Into_Consecutive_Subsequences ../Split_Array_Into_Consecutive_Subsequences/build)
