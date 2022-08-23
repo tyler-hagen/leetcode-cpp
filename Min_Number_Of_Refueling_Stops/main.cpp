@@ -47,3 +47,15 @@ TEST(Min_Number_Of_Refueling_Stops, empty_case)
     int actual = s.minRefuelStops(target, startFuel, stations);
     EXPECT_EQ(actual, expected);
 }
+
+TEST(Min_Number_Of_Refueling_Stops, big_case)
+{
+    vector<vector<int>> stations = {{5,1000000000},{1000,1000000000},{100000,1000000000}};
+    int target = 1000000000;
+    int startFuel = 1000000000;
+    Solution s;
+    int expected = 0;
+
+    int actual = s.minRefuelStops(target, startFuel, stations);
+    EXPECT_EQ(actual, expected);
+}
